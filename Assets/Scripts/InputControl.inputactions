@@ -1,0 +1,52 @@
+{
+    "name": "InputControl",
+    "maps": [
+        {
+            "name": "Cam",
+            "id": "33f5220d-67d6-468e-9ef3-055a76cbd8aa",
+            "actions": [
+                {
+                    "name": "XAxis",
+                    "type": "Value",
+                    "id": "18ecc51c-25aa-4271-8eca-6a1d87e69543",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "YAxis",
+                    "type": "Value",
+                    "id": "b5f5afd3-5b4c-45fd-92f0-7e1aacd4dabb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "897c65cf-4c09-4c5c-9b7d-b909ebf276f9",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fada6ab3-290c-44e0-99ef-678932c3b983",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "YAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
