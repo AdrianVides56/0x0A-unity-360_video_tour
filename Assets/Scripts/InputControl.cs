@@ -33,6 +33,22 @@ public class @InputControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""c64df461-4f7f-49d9-8d0a-40d46c64fa48"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""7c92684c-82dc-4f9f-9a84-62fb42fde346"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""SlowTap(duration=0.01,pressPoint=0.1)""
                 }
             ],
             ""bindings"": [
@@ -57,6 +73,28 @@ public class @InputControl : IInputActionCollection, IDisposable
                     ""action"": ""YAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80b4892c-d5ac-47f0-bab1-e3763a2a0e90"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec465f6c-d95c-4c33-8c05-c155eb0a5151"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +105,8 @@ public class @InputControl : IInputActionCollection, IDisposable
         m_Cam = asset.FindActionMap("Cam", throwIfNotFound: true);
         m_Cam_XAxis = m_Cam.FindAction("XAxis", throwIfNotFound: true);
         m_Cam_YAxis = m_Cam.FindAction("YAxis", throwIfNotFound: true);
+        m_Cam_Zoom = m_Cam.FindAction("Zoom", throwIfNotFound: true);
+        m_Cam_Move = m_Cam.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +158,16 @@ public class @InputControl : IInputActionCollection, IDisposable
     private ICamActions m_CamActionsCallbackInterface;
     private readonly InputAction m_Cam_XAxis;
     private readonly InputAction m_Cam_YAxis;
+    private readonly InputAction m_Cam_Zoom;
+    private readonly InputAction m_Cam_Move;
     public struct CamActions
     {
         private @InputControl m_Wrapper;
         public CamActions(@InputControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @XAxis => m_Wrapper.m_Cam_XAxis;
         public InputAction @YAxis => m_Wrapper.m_Cam_YAxis;
+        public InputAction @Zoom => m_Wrapper.m_Cam_Zoom;
+        public InputAction @Move => m_Wrapper.m_Cam_Move;
         public InputActionMap Get() { return m_Wrapper.m_Cam; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +183,12 @@ public class @InputControl : IInputActionCollection, IDisposable
                 @YAxis.started -= m_Wrapper.m_CamActionsCallbackInterface.OnYAxis;
                 @YAxis.performed -= m_Wrapper.m_CamActionsCallbackInterface.OnYAxis;
                 @YAxis.canceled -= m_Wrapper.m_CamActionsCallbackInterface.OnYAxis;
+                @Zoom.started -= m_Wrapper.m_CamActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_CamActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_CamActionsCallbackInterface.OnZoom;
+                @Move.started -= m_Wrapper.m_CamActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_CamActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_CamActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_CamActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +199,12 @@ public class @InputControl : IInputActionCollection, IDisposable
                 @YAxis.started += instance.OnYAxis;
                 @YAxis.performed += instance.OnYAxis;
                 @YAxis.canceled += instance.OnYAxis;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
         }
     }
@@ -157,5 +213,7 @@ public class @InputControl : IInputActionCollection, IDisposable
     {
         void OnXAxis(InputAction.CallbackContext context);
         void OnYAxis(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }
