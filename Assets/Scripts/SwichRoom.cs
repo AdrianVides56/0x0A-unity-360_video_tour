@@ -18,4 +18,9 @@ public class SwichRoom : MonoBehaviour
         animator.Play("FadeIn");
         transform.parent.gameObject.SetActive(false);
     }
+
+    public void ToggleInfo(GameObject info)
+    {
+        info.SetActive(!info.activeSelf);
+    }
 }
