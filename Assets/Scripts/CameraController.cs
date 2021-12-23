@@ -42,6 +42,6 @@ public class CameraController : MonoBehaviour
             mSensitivity += 3;
         }
         gameObject.GetComponent<Camera>().fieldOfView = Mathf.Clamp(gameObject.GetComponent<Camera>().fieldOfView, 10, 100);
-        mSensitivity = Mathf.Clamp(mSensitivity, 1, 5);
+        mSensitivity = Mathf.Clamp(mSensitivity, 1, 20);
     }
 }

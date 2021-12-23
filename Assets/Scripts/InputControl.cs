@@ -65,8 +65,30 @@ public class @InputControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d28e099a-4453-41ee-8675-e9d65bfb1112"",
+                    ""path"": ""<Touchscreen>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fada6ab3-290c-44e0-99ef-678932c3b983"",
                     ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eaa594b5-7d23-49a9-ae5a-89caf3299afa"",
+                    ""path"": ""<Touchscreen>/delta/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -89,6 +111,17 @@ public class @InputControl : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""ec465f6c-d95c-4c33-8c05-c155eb0a5151"",
                     ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5d4eb52-7532-4677-bc41-d2faa6c14083"",
+                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
